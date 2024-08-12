@@ -21,17 +21,21 @@ def shutdown():
 
 #Function that sends the notification email once the render is finished
 def send_email(filepath):
-    sender_email = "sender@gmail.com"
-    receiver_email = "receiver@gmail.com"
-    app_password = "enter app password here"
+    try:
+        sender_email = "boytutoy@gmail.com"
+        receiver_email = "mlgvalenzuela@yahoo.com"
+        app_password = "eiuiqdqmaihkcqxd"
 
-    email_content = f"Subject: RENDER FINISHED\n\nThe rendered image is saved in {filepath}"
+        email_content = f"Subject: RENDER FINISHED\n\nThe rendered image is saved in {filepath}"
 
-    server = smtplib.SMTP("smtp.gmail.com", 587)
-    server.starttls()
-    server.login(sender_email, app_password)
-    server.sendmail(sender_email, receiver_email, email_content)
-    print ("Notification mail sent!\n")
+        server = smtplib.SMTP("smtp.gmail.com", 587)
+        server.starttls()
+        server.login(sender_email, app_password)
+        server.sendmail(sender_email, receiver_email, email_content)
+        print ("Notification mail sent!\n")
+    except Exception as e:
+        print (f"Cannot send notification email: {e}")
+
 
 print("POST-RENDER SHUTDOWN\n")
 filepath = input("Enter the expected complete filepath of the rendered image: ")
